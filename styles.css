@@ -3,3 +3,15 @@
     height:300px!important;
     padding: 30px;
 }
+
+
+.top-rated{
+    border: rgb(0, 140, 255) 2px solid;  
+}
+
+
+.card-title{
+    color:white;
+    text-align: center;
+    vertical-align: middle;
+}
