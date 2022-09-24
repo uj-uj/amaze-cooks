@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <style>
-        .ch{
-            width: 100%;
-            height: 100%;
-            
-        }
+      .ch {
+        width: 100%;
+        height: 100%;
+      }
     </style>
-</head>
-<body>
+
+    <script src="assets/js/main-script.js"></script>
+  </head>
+  <body>
     <div style="position: relative; flex: 0 0 45%">
+      <a href="products.html">
         <img
-          class="img-fluid category"
-          data-bss-parallax=""
-          data-bss-parallax-speed="0.8"
+          class="img-fluid category category-img"
           src="assets/img/products/veg.jpg"
-          
         />
-        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end ch">
-          <h1 class="card-title" style="color: white;">Veg</h1>
-    </div>
+      </a>
+      <div
+        class="card-img-overlay h-100 d-flex flex-column justify-content-end"
+      >
+        <h1 class="card-title">Veg</h1>
       </div>
-</body>
+
+      <div class="category-poper">
+        <div class="single-select">
+          <button class="veg">VEG</button>
+          <button class="Non-veg">NON-VEG</button>
+        </div>
+        <div class="combo-select">
+          <button class="combo">COMBO</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
