@@ -1,0 +1,57 @@
+.category {
+  width: 650px !important;
+  height: 300px !important;
+  padding: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .category {
+    width: 350px !important;
+    height: 180px !important;
+    padding: 15px;
+  }
+}
+.top-rated {
+  border: rgb(0, 140, 255) 2px solid;
+}
+
+.card-title {
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}
+.category-img {
+  border-radius: 60px !important;
+}
+
+/* test */
+
+.category-poper-occasion,
+.category-poper-house,
+.category-poper-wedding,
+.category-poper-birthday {
+  /* border: 1px black solid; */
+  display: none;
+  flex-direction: column;
+  padding: 2px;
+  background-color: rgb(235, 232, 229);
+  border-radius: 10px;
+  width: 100%;
+}
+
+.single-select,
+.combo-select {
+  display: flex;
+}
+.single-select > *,
+.combo {
+  background-color: rgb(124, 184, 161);
+  padding: 0.5em;
+  flex-grow: 1;
+  color: white;
+  border: 0;
+  margin: 3px;
+  border-radius: 60px;
+}
+
+/* test end */
