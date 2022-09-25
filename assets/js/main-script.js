@@ -5,3 +5,7 @@ $(".category-card").click(function () {
     $(".category-poper-" + v).toggle(1000);
 
 });
+
+$(".filter-button").click(function () {
+    $(".filter-options").toggle(1000)
+});

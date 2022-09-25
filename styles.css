@@ -55,3 +55,26 @@
 }
 
 /* test end */
+
+/*  */
+.filter-card {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  width: 500px;
+  margin: auto;
+}
+
+.filter-options {
+  display: none;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.filter-card .filter-button {
+  align-self: center;
+}
+
+.filter-search {
+  display: flex;
+}
