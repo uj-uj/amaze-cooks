@@ -1,3 +1,7 @@
+<?php
+          namespace Phppot;
+        session_start();
+          ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,17 +12,18 @@
     />
     <title>Home - amaze cooks</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  />
 
     <style>
       .checked {
@@ -83,10 +88,28 @@
               <a class="nav-link" href="contacts.html">Contacts</a>
             </li>
           </ul>
+          <?php
+          if(isset($_SESSION["user_name"])){
+            echo($_SESSION["user_name"]);
+            echo '
+            <form action="auth/logout.php" method="post">
+              <input type="submit" value="logout">
+            </form>
+            ';
+          }
+          
+          else{
+          ?>
+          <a class="btn btn-primary shadow" role="button" href="#register-vendor"
+            >Register as Vendor</a
+          >
           <a class="btn btn-primary shadow" role="button" href="signup.html"
             >Sign up</a
           >
-        </div>
+          <?php 
+       
+      }?>
+      </div>
       </div>
     </nav>
     <header class="bg-primary-gradient pt-5">
@@ -138,17 +161,43 @@
                 "
               />
               <p>
-                Nullam id dolor id nibh ultricies vehicula ut id elit. Cras
+                Nullamssssssssssss id dolor id nibh ultricies vehicula ut id elit. Cras
                 justo odio, dapibus ac facilisis in, egestas eget quam.
               </p>
               <p>
-                <a
-                  class="btn btn-primary mt-6"
-                  role="button"
-                  href="#"
-                  style="margin-top: 50px"
-                  >Learn more</a
-                >
+         
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+
+
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">HTML</a></li>
+                  <li><a href="#">CSS</a></li>
+                  <li><a href="#">JavaScript</a></li>
+                </ul>
+              </div>
+              
+              <div class="form-outline filter-search ">
+                <form action="some.php" method="post">
+
+                  <input type="search" id="form1" class="form-control home-search" name="search_keyword" placeholder="" />
+                  <button type="submit" name="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </form>
+
+              </div>
               </p>
             </div>
           </div>
@@ -789,12 +838,12 @@
         </div>
       </div>
     </section>
-    <section class="py-5">
+    <section class="py-5"  id="register-vendor">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-8 col-xl-6 text-center mx-auto">
-            <p class="fw-bold text-success mb-2">Contacts</p>
-            <h2 class="fw-bold">How you can reach us</h2>
+            <p class="fw-bold text-success mb-2">Register</p>
+            <h2 class="fw-bold">Register as Vendor</h2>
           </div>
         </div>
         <div class="row d-flex justify-content-center">
@@ -813,20 +862,68 @@
                 <div class="mb-3">
                   <input
                     class="form-control"
-                    type="email"
-                    id="email-1"
-                    name="email"
-                    placeholder="Email"
+                    type="text"
+                    id="vendor-city"
+                    name="vendor-city"
+                    placeholder="City"
                   />
                 </div>
                 <div class="mb-3">
-                  <textarea
+                  <p>category</p>
+                 
+                  <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefault"
+                />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Non Veg 
+                  </label>
+                  <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefault"
+                />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Desert 
+                  </label>
+                  <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefault"
+                /> <label class="form-check-label" for="flexCheckDefault">
+                  Veg 
+                </label>
+              </div>
+                <div class="mb-3">
+                  <input
                     class="form-control"
-                    id="message-1"
-                    name="message"
-                    rows="6"
-                    placeholder="Message"
-                  ></textarea>
+                    type="text"
+                    id="vendor-location"
+                    name="vendor-location"
+                    placeholder="Location"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="vendor-mobile"
+                    name="mobile"
+                    placeholder="Mobile"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="vendor-Email"
+                    name="vendor-email"
+                    placeholder="Email"
+                  />
                 </div>
                 <div>
                   <button

@@ -60,12 +60,13 @@
 .filter-card {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid black; */
+  border: 1px solid black;
   width: 500px;
   margin: auto;
 }
 
 .filter-options {
+  border: 1px solid black;
   display: none;
   flex-direction: column;
   margin-left: 20px;
@@ -77,4 +78,28 @@
 
 .filter-search {
   display: flex;
+  justify-content: center;
+}
+
+.home-search{
+  width: auto;
+}
+
+
+/* blur box */
+
+body > section > div.container.py-5 > div.row.mx-auto > div > div > div > div > div > a:nth-child(1) > div.blur-box{
+  border: 1px black solid;
+}
+
+.contact-info{
+  filter: blur(5px);
+  padding:10px;
+}
+
+.contact-info:hover{
+  filter: blur(0);
+}
+body > section > div.container.py-5 > div.row.mx-auto > div > div > div > div > div > a:nth-child(3) > div.blur-box > div.show > button{
+  background-color: black;
 }
