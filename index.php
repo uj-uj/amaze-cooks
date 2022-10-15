@@ -73,7 +73,7 @@
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">Home</a>
+              <a class="nav-link active" href="index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="services.html">Services</a>
@@ -849,7 +849,7 @@
         <div class="row d-flex justify-content-center">
           <div class="col-md-6 col-xl-4">
             <div>
-              <form class="p-3 p-xl-4" method="post">
+              <form class="p-3 p-xl-4" method="get" action="register_vendor.php">
                 <div class="mb-3">
                   <input
                     class="form-control"
@@ -859,22 +859,15 @@
                     placeholder="Name"
                   />
                 </div>
-                <div class="mb-3">
-                  <input
-                    class="form-control"
-                    type="text"
-                    id="vendor-city"
-                    name="vendor-city"
-                    placeholder="City"
-                  />
-                </div>
+                
                 <div class="mb-3">
                   <p>category</p>
                  
                   <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  value="non-veg"
+                  name="category[]"
                   id="flexCheckDefault"
                 />
                   <label class="form-check-label" for="flexCheckDefault">
@@ -883,7 +876,8 @@
                   <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  value="desert"
+                  name="category[]"
                   id="flexCheckDefault"
                 />
                   <label class="form-check-label" for="flexCheckDefault">
@@ -892,27 +886,20 @@
                   <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  value="veg"
+                  name="category[]"
                   id="flexCheckDefault"
                 /> <label class="form-check-label" for="flexCheckDefault">
                   Veg 
                 </label>
               </div>
-                <div class="mb-3">
-                  <input
-                    class="form-control"
-                    type="text"
-                    id="vendor-location"
-                    name="vendor-location"
-                    placeholder="Location"
-                  />
-                </div>
+               
                 <div class="mb-3">
                   <input
                     class="form-control"
                     type="text"
                     id="vendor-mobile"
-                    name="mobile"
+                    name="vendor-mobile"
                     placeholder="Mobile"
                   />
                 </div>
@@ -925,12 +912,49 @@
                     placeholder="Email"
                   />
                 </div>
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="vendor-city"
+                    name="vendor-city"
+                    placeholder="City"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="vendor-location"
+                    name="vendor-location"
+                    placeholder="Location / Area"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="vendor-address"
+                    name="vendor-address"
+                    placeholder="Address"
+                  />
+                </div> 
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="vendor-pin"
+                    name="vendor-pin"
+                    placeholder="Pin / Zip Code"
+                  />
+                </div>
+
                 <div>
                   <button
                     class="btn btn-primary shadow d-block w-100"
                     type="submit"
                   >
-                    Send
+                    Register
                   </button>
                 </div>
               </form>
@@ -1006,7 +1030,7 @@
                 </div>
                 <div class="px-2">
                   <h6 class="fw-bold mb-0">Location</h6>
-                  <p class="text-muted mb-0">12 Example Street</p>
+                  <p class="text-muted mb-0">White-field Jpnagar Jaynagar  </p>
                 </div>
               </div>
             </div>

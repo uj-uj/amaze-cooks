@@ -87,19 +87,19 @@
 
 
 /* blur box */
-
-body > section > div.container.py-5 > div.row.mx-auto > div > div > div > div > div > a:nth-child(1) > div.blur-box{
+.blur-box{
   border: 1px black solid;
 }
 
 .contact-info{
   filter: blur(5px);
-  padding:10px;
 }
 
-.contact-info:hover{
+.contact-info-show{
   filter: blur(0);
 }
-body > section > div.container.py-5 > div.row.mx-auto > div > div > div > div > div > a:nth-child(3) > div.blur-box > div.show > button{
-  background-color: black;
+
+.mobile-info{
+  padding:20px;
+
 }

@@ -1,9 +1,5 @@
 <?php
-echo 'hello'
-?>
-
-<?php
-echo 'hello';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +77,7 @@ if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="services.html">Services</a>
@@ -164,36 +160,42 @@ if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
              
 
                     <?php        
+                    
                     if(isset($_POST["submit"]))
                     {
                         if(isset($_POST["search_keyword"]))
                         {
 
                             $key=$_POST['search_keyword'];
-                            $sql="SELECT id, name, location,category FROM cater where location like '%".$key."%' OR name like '%".$key."%' OR category like '%".$key."%'";
+                            $sql="SELECT name, location,category,mobile FROM caters where location like '%".$key."%' OR name like '%".$key."%' OR category like '%".$key."%'";
                         }
                         else
                         {
 
                             $key=$_POST['search_location'];
-                            $sql="SELECT id, name, location,category FROM cater where location like '%".$key."%'";
+                            $sql="SELECT  name, location,category,mobile FROM caters where location like '%".$key."%'";
                         }
                     }
                     else{
-                       
+                 
+                        $sql = "SELECT  name,mobile,location,category FROM caters";
+                    }
 
-                        $sql = "SELECT id, name, location,category FROM cater";
-                    }                       
-                                    $result = $conn->query($sql); if
-                    ($result->num_rows > 0) { // output data of each row
-                    while($row = $result->fetch_assoc()) { 
+                    $user_logged=isset($_SESSION["user_name"])?true:false;
+
+                    
+                    $result = $conn->query($sql); 
+                    if($result->num_rows > 0) 
+                    { // output data of each row
+                    while($row = $result->fetch_assoc()) 
+                    { 
                       echo '
 
                     <a
                       ><img
                         class="ref-image"
                         src="https://cdn.bootstrapstudio.io/products/product-30_md.jpg"
-                        loading="lazy"
+                        loading="lazy";
                       />
                       <div class="ref-product-data">
                         <div class="ref-product-info">
@@ -206,30 +208,47 @@ if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
  
                       </div>
                         Category:  '.$row["category"].'
+                       
 
 
 
                    
                     <div class="blur-box" >
                     <div class="contact-info">
-
-                    Phone Number:
-                    998612345
+                    <div class="mobile-info">
+                    Contact:  '.$row["mobile"].'
                     </div>
-                    <div class="show">
-                      <button>
-                        login
+                    </div>
+                    <div class="show">';
+                    if($user_logged==true)
+                    echo '
+                      <button class="show-contact" onclick="track_count('.$_SESSION["user_name"].')">
+                        View contact info
+                      </button>
+                      ';
+                      else
+                      echo'
+                      <button class="show-contact" onclick="login_modal()">
+                        LOGIN to view  info
                       </button>
                     </div>
 </div>
 </a>
-                    '; }
+                    
+
+'; 
+                  
+                  
+                  }
                     
                     } 
                     else { echo "0 results"; } $conn->close(); ?>
 
                     
                   </div>
+
+
+                  
                 </div>
               </div>
             </div>
@@ -357,5 +376,7 @@ if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/bold-and-bright.js"></script>
     <script src="assets/js/main-script.js"></script>
+
+
   </body>
 </html>
