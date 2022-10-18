@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('database.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,8 @@ session_start();
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="assets/css/main-styles.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">  
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -25,27 +27,12 @@ session_start();
       referrerpolicy="no-referrer"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+    
+  <link rel="stylesheet" href="assets/css/modal-style.css">
   </head>
-  <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database ="amaze";
-$port = "3307";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password,$database,$port);
-
-
-// Check connection
-if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
-  echo "Connected successfully"; ?>
   <body>
-    <nav
-      class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3"
-      id="mainNav"
-    >
+    <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav">
       <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="/"
           ><span
@@ -208,36 +195,37 @@ if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
  
                       </div>
                         Category:  '.$row["category"].'
-                       
 
-
-
-                   
                     <div class="blur-box" >
+
                     <div class="contact-info">
-                    <div class="mobile-info">
-                    Contact:  '.$row["mobile"].'
-                    </div>
+                    <div class="mobile-info" id="mobile-info" user-name='.$_SESSION["user_name"].' cater-name="'.$row["name"].'">
+                        Contact:
+                      </div>
+                      <form action="" class="phone-button" method="get">
+                        <button id="call" href="products.html" > <i class="uil uil-phone"> call now</i></button>
+                      </form>
+                      
                     </div>
                     <div class="show">';
                     if($user_logged==true)
                     echo '
-                      <button class="show-contact" onclick="track_count('.$_SESSION["user_name"].')">
+                      <button class="show-contact"  onclick="track_count(\''.$_SESSION["user_name"].'\',\''.$row["name"].'\')">
                         View contact info
                       </button>
                       ';
-                      else
+                      else{
                       echo'
-                      <button class="show-contact" onclick="login_modal()">
+                      <button class=""  data-bs-toggle="modal" data-bs-target="#myModal" onclick="login_modal()">
                         LOGIN to view  info
-                      </button>
+                      </button>';
+                      }
+                    echo'
+                      </div>
                     </div>
-</div>
-</a>
-                    
-
-'; 
-                  
+                    </a>
+                    '; 
+                                      
                   
                   }
                     
@@ -257,6 +245,112 @@ if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
       </div>
     </section>
    
+
+
+    <div class="modal" id="myModal">
+         <div class="modal-dialog">
+             <div class="modal-content">
+                 <div class="modal-body">
+
+
+
+                     <div class="container mod-container">
+                         <div class="forms">
+                             <div class="form login">
+                                 <span class="title">Login</span>
+                                 <div id="login-stats"></div>
+                                 <form action="#">
+                                     <div class="input-field">
+                                         <input type="text" id="login-email" placeholder="Enter your email" required>
+                                         <i class="uil uil-envelope icon"></i>
+                                     </div>
+                                     <div class="input-field">
+                                         <input type="password" id="login-password" class="password" placeholder="Enter your password" required>
+                                         <i class="uil uil-lock icon"></i>
+                                         <i class="uil uil-eye-slash showHidePw"></i>
+                                     </div>
+
+                                     <div class="checkbox-text">
+                                         <div class="checkbox-content">
+                                             <input type="checkbox" id="logCheck">
+                                             <label for="logCheck" class="text">Remember me</label>
+                                         </div>
+
+                                         <a href="#" class="text">Forgot password?</a>
+                                     </div>
+
+                                     <div class="input-field button">
+                                         <input type="button" onclick="process_login()" value="Login">
+                                     </div>
+                                 </form>
+
+                                 <div class="login-signup">
+                                     <span class="text">Not a member?
+                                         <a href="#" class="text signup-link">Signup Now</a>
+                                     </span>
+                                 </div>
+                             </div>
+
+                             <!-- Registration Form -->
+                             <div class="form signup">
+                                 <span class="title">Registration</span>
+
+
+                                 <a href="#" class="text login-link m-2"> Already a member? Login</a>
+
+                                 <div id="signup-stats"></div>
+
+                                 <form action="#">
+                                     <div class="input-field">
+                                         <input type="text" id="register-name" placeholder="Enter your name" required>
+                                         <i class="uil uil-user"></i>
+                                     </div>
+                                     <div class="input-field">
+                                         <input type="text" id="register-email" placeholder="Enter your email" required>
+                                         <i class="uil uil-envelope icon"></i>
+                                     </div>
+                                     <div class="input-field">
+                                         <input type="text" id="register-mobile" placeholder="Enter your Mobile no" required>
+                                         <i class="uil uil-envelope icon"></i>
+                                     </div>
+                                     <div class="input-field">
+                                         <input type="text" id="register-city" placeholder="Enter your City" required>
+                                         <i class="uil uil-envelope icon"></i>
+                                     </div>
+                                     <div class="input-field">
+                                         <input type="password" id="register-password1" class="password" placeholder="Create a password" required>
+                                         <i class="uil uil-lock icon"></i>
+                                     </div>
+                                     <div class="input-field">
+                                         <input type="password" id="register-password2" class="password" placeholder="Confirm a password" required>
+                                         <i class="uil uil-lock icon"></i>
+                                         <i class="uil uil-eye-slash showHidePw"></i>
+                                     </div>
+
+                                     <div class="input-field button">
+                                         <input type="button" onclick="process_register('abc')" value="Signup">
+                                     </div>
+                                 </form>
+
+
+
+                             </div>
+                         </div>
+                     </div>
+
+
+
+
+
+                 </div>
+             </div>
+         </div>
+     </div>
+
+
+
+
+
     <footer class="bg-primary-gradient">
       <div class="container py-4 py-lg-5">
         <div class="row justify-content-center">
@@ -370,6 +464,7 @@ if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
         </div>
       </div>
     </footer>
+    <script src="assets/js/modal-script.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdn.reflowhq.com/v1/toolkit.min.js"></script>

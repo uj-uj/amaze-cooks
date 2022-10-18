@@ -1,0 +1,177 @@
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+                    function process_login(){
+                        email=document.getElementById("login-email").value
+                        password=document.getElementById("login-password").value
+                        status=document.getElementById("status")
+                        jQuery.ajax({
+                            type: "POST",
+                            url: 'functions.php',
+                            dataType: 'json',
+                            data: {functionname: login, arguments: [email,password]},
+                            success: function (obj, textstatus) {
+                                        if( !('error' in obj) ) {
+                                            console.log("successfull")
+                                            status.innerHTML="Logged in successfully"
+                                        }
+                                        else {
+                                            console.log(obj.error);
+                                        }
+                                    }
+                                });
+
+                                // window.location.href=window.location.href;
+                    }
+                </script>
+
+
+
+
+
+
+
+<script>
+                    function process_register(){
+                        name=document.getElementById("register-name").value
+                        email=document.getElementById("register-email").value
+                        password=document.getElementById("register-password").value
+                        status=document.getElementById("status")
+                        jQuery.ajax({
+                            type: "POST",
+                            url: 'functions.php',
+                            dataType: 'json',
+                            data: {functionname: login, arguments: [email,password]},
+                            success: function (obj, textstatus) {
+                                        if( !('error' in obj) ) {
+                                            console.log("successfull")
+                                            status.innerHTML="Logged in successfully"
+                                        }
+                                        else {
+                                            console.log(obj.error);
+                                        }
+                                    }
+                                });
+
+                                window.location.href=window.location.href;
+                    }
+                </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form action="#">
+                    <div class="input-field">
+                        <input type="text" id="register-name" placeholder="Enter your name" required>
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="register-email" placeholder="Enter your email" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text"  id="register-mobile" placeholder="Enter your Mobile no" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="register-city" placeholder="Enter your City" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="register-password1" class="password" placeholder="Create a password" required>
+                        <i class="uil uil-lock icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="register-password2" class="password" placeholder="Confirm a password" required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>14:58 16-10-2022
+
+                    <div class="checkbox-text">
+                        <div class="checkbox-content">
+                            <input type="checkbox" id="termCon">
+                            <label for="termCon" class="text">I accepted all terms and conditions</label>
+                        </div>
+                    </div>
+
+                    <div class="input-field button">
+                        <input type="button" value="Signup">
+                    </div>
+                </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter your name" required>
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter your email" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter your Mobile no" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" placeholder="Enter your City" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="password" placeholder="Create a password" required>
+                        <i class="uil uil-lock icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="password" placeholder="Confirm a password" required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+
+                    <div class="checkbox-text">
+                        <div class="checkbox-content">
+                            <input type="checkbox" id="termCon">
+                            <label for="termCon" class="text">I accepted all terms and conditions</label>
+                        </div>
+                    </div>
+
+                    <div class="input-field button">
+                        <input type="button" value="Signup">
+                    </div>
+                </form>

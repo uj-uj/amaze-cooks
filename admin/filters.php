@@ -7,14 +7,14 @@ $GLOBALS['conn']=$conn;
 define('conn', $conn);
 function get_vendors($conn=conn)
 {
-        $sql = "SELECT name, location,category,approved FROM caters";
+        $sql = "SELECT name, location,category,approved,view_count FROM caters";
         $result = $conn->query($sql); 
         
         return $result;
 }
 function get_category($category,$conn=conn)
 {  
-        $sql = "SELECT name, location,category,approved FROM caters where category LIKE '%".$category."%'";
+        $sql = "SELECT name, location,category,approved,view_count FROM caters where category LIKE '%".$category."%'";
         $result = $conn->query($sql); 
         
         return $result;
@@ -108,12 +108,13 @@ function get_category($category,$conn=conn)
                 }
                 // approve_vendor("ujwalc");  
                 if($result->num_rows > 0) { // output data of each row
+                    echo'<div class="count"><center>Count '.$result->num_rows.'</center></div>';
                     while($row = $result->fetch_assoc()) { 
                         if($row['approved']){$approve_status="Approved";}else{$approve_status="Not Approved";}
                     echo '
                     <div class="col-md-4 cust_blogteaser" style="padding-bottom: 20px;margin-bottom: 32px;">
-                    <a href="#">
-                    <img class="img-fluid" style="height: 200px;padding-left: 40px;" src="chef2.jpg" /></a>
+                    
+                    <img class="img-fluid" style="height: 200px;padding-left: 40px;" src="chef2.jpg" />
                     <h3 style="text-align: left;margin-top: 20px;font-family: \'Open Sans\', sans-serif;
                     font-size: 18px;margin-right: 0;margin-left: 24px;
                     line-height: 34px;letter-spacing: 0px;font-style: normal;font-weight: bold;">
@@ -126,6 +127,9 @@ function get_category($category,$conn=conn)
                     
                     <p class="text-secondary" style="text-align: left;font-size: 14px;line-height: 22px;color: rgb(9,9,10);margin-left: 24px;">
                     '.$row["category"].'
+                    </p>
+                    <p class="text-secondary" style="text-align: left;font-size: 14px;line-height: 22px;color: rgb(9,9,10);margin-left: 24px;">
+                    '.$row["view_count"].'
                     </p>
                     
                     <p class="text-secondary" style="text-align: left;font-size: 14px;line-height: 22px;color: rgb(9,9,10);margin-left: 24px;">
